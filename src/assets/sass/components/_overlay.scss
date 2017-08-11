@@ -1,0 +1,36 @@
+#overlay {
+  position: absolute;
+  z-index: 99998;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+
+  > .overlay-background {
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: _palette(overlay, bg);
+    transform: scale(1.1);
+
+    //TODO: find another way to do this
+ 
+  }
+
+  > .container {
+    position: relative;
+    top: 20%;
+    transform: translateY(-20%);
+    background: _palette(overlay, bg-content);
+    width: 35%;
+
+    > .inner {
+      padding: 1.5em !important;
+    }
+  }
+}

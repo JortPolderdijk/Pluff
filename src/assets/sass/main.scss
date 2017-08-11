@@ -1,0 +1,48 @@
+@import 'libs/vars';
+@import 'libs/functions';
+@import 'libs/mixins';
+@import 'libs/skel';
+@import '../css/font-awesome.min.css';
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+@include skel-breakpoints((
+  xlarge: '(max-width: 1680px)',
+  large: '(max-width: 1280px)',
+  medium: '(max-width: 980px)',
+  small: '(max-width: 736px)',
+  xsmall: '(max-width: 480px)'
+));
+
+@include skel-layout((
+  reset: 'full',
+  boxModel: 'border',
+  containers: 80em,
+  grid: (gutters: 2em),
+  breakpoints: (
+    large: (
+      containers: 65em,
+      grid: (gutters: 1.5em)
+    ),
+    medium: (
+      containers: 90%
+    ),
+    small: (
+      containers: (90%, true),
+      grid: (gutters: 1.25em)
+    )
+  )
+));
+
+@import 'base/page';
+@import 'base/typography';
+
+@import 'components/form';
+@import 'components/box';
+@import 'components/icon';
+@import 'components/button';
+@import 'components/loading';
+@import 'components/overlay';
+
+@import 'layout/header';
+@import 'layout/nav';
+@import 'layout/main';

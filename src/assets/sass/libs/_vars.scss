@@ -1,0 +1,73 @@
+$misc: (
+  z-index-base: 10000
+);
+
+$duration: (
+  nav: 0.5s,
+  transition: 0.2s
+);
+
+$size: (
+  border-radius: 0px,
+  border-width: 2px,
+  element-height: 2.75em,
+  element-margin: 2em,
+  header: (
+    height: 4em
+  ),
+  navbar: (
+    width: 10%,
+    height-sm: 30vh,
+    height-sm-min: 11em,
+    logo-height-sm: 11vh,
+    logo-height-sm-min: 3em,
+    letter-spacing: 0.122em,
+  ),
+);
+
+$font: (
+  family: (Helvetica, Arial, sans-serif),
+  family-fixed: ('Courier New', monospace),
+  family-head: ('Montserrat', Helvetica, sans-serif),
+  weight: normal,
+  weight-bold: bold
+);
+
+$palette: (
+  bg: #FFFFFF,
+  fg: #7F8C8D,
+  fg-bold: #2C3E50,
+  fg-light: #BBBBBB,
+  border: rgba(135, 135, 134, 0.25),
+  border-bg: rgba(135, 135, 134, 0.075),
+  border2-bg: rgba(135, 135, 134, 0.2),
+  href-fg: #1086C8,
+  button: (
+    bg: #5A5A5A, //
+    fg: #FFFFFF, //
+    bg-special: (#FFD102, #F49B21, #E94C8D, #865CA1, #1086C8, #3DBACC),
+    bg-special-hover:(darken(#FFD102, 20%), darken(#F49B21, 20%), darken(#E94C8D, 20%), darken(#865CA1, 20%), darken(#1086C8, 20%), darken(#3DBACC, 20%)),
+    fg-special: #FFFFFF,
+    disabled: #7F8C8D
+  ),
+  overlay: (
+    bg: rgba(28, 31, 63, 0.90),
+    bg-content: #FFFFFF,
+  ),
+  header: (
+    bg: #E8E8E8,
+    profile-border: #FFFFFF,
+  ),
+  navbar: (
+    bg: #1C1F3F,
+    fg: #FFFFFF,
+    icons: #E84B3C,
+  ),
+  form: (
+    bg: rgba(135, 135, 134, 0.075),
+    bg-selected: darken(rgb(135, 135, 134), 25%),
+    fg-selected: #FFFFFF,
+    border: rgba(135, 135, 134, 0.25),
+    focus-border: #1086C8,
+  ),
+);

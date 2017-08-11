@@ -1,0 +1,67 @@
+// MSIE: Required for IEMobile.
+@-ms-viewport {
+  width: device-width;
+}
+
+// MSIE: Prevents scrollbar from overlapping content.
+body {
+  -ms-overflow-style: scrollbar;
+}
+
+// Ensures page width is always >=320px.
+@include breakpoint(xsmall) {
+  html, body {
+    min-width: 320px;
+  }
+}
+
+
+body {
+  background: _palette(bg);
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  // Prevents animation/transition "flicker" on page load.
+  // Automatically added/removed by js.
+  &.is-loading {
+    *, *:before, *:after {
+      @include vendor("animation", "none !important");
+      @include vendor("transition", "none !important");
+    }
+  }
+
+  // Shows a blue screen while loading.
+  // Automatically removed by js.
+  > .page-load-animation {
+    opacity: 1;
+    position: absolute;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: _palette(overlay, bg);
+    pointer-events: none;
+
+    &.is-loaded {
+      @include vendor("animation", "page-load linear 1s");
+      @include vendor("animation-duration", ".5s");
+
+      opacity: 0;
+    }
+  }
+
+  @keyframes page-load {
+    0% {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
