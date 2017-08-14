@@ -21,8 +21,8 @@
 </nav>
 
 <header>
-  <div class="item profile">
-    <strong>Howdy, !</strong>
+  <div class="item profile" *ngIf="isLoggedIn">
+    <strong>Howdy, {{name}}!</strong>
     <img src="https://placehold.it/200x200" alt="" class="profile-picture"/>
   </div>
   <div class="item search disabled">

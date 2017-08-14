@@ -29,5 +29,15 @@ export class AppComponent {
     this.oAuthService.tryLogin({});
   }
 
+  public get isLoggedIn()
+  {
+    return this.oAuthService.hasValidAccessToken();
+  }
 
+  public get name()
+  {
+    let claims = this.oAuthService.getIdentityClaims();
+    if (!claims) return 'Unknown';
+    return claims.given_name;
+  }
 }
