@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions, URLSearchParams, Headers } from '@angular/http';
 import { Building, Beacon, Calendar, CalendarItem, Course, CanvasCalendar, Enrollment, CanvasToDo, Assignment, Submission, Lock_Info, CanvasRubric, CanvasRubricSettings, Attachment, CanvasRating, CanvasUpcoming, StudyResult, Group, GroupMember, InzetItem, ClientLocation, Mapinfo, MapCoordinate, Statistics, Geocoordinate, Floordimension, Image, MaxDetectedRssi, WifiUser, FloorStatistic, NewsFeed, NewsItem, Person, Claim, RoomOccupancy, Schedule, ScheduleItem, Period, ScheduleQueryItem, UserSetting, SpPerson } from './models';
 import { Observable } from 'rxjs';
+import { OAuthService } from 'angular-oauth2-oidc';
 import 'rxjs/add/operator/map';
 
 
@@ -13,7 +14,7 @@ import 'rxjs/add/operator/map';
 export class ApiClientService {
 	domain:string;
 
-  constructor(public http: Http){
+  constructor(public http: Http, private oAuthService: OAuthService){
     this.domain = 'https://api.fhict.nl';
   }
   /*
@@ -49,18 +50,23 @@ export class ApiClientService {
 	* @name getDefaultHeaders
 	*
 	*/
-  private getDefaultHeaders(): Headers {
-    let headers = new Headers();
-
-    // Use this methode to insert some headers that are send with each request.
-    // Usefull for setting the `Autorization header` or any other header you want send with each request.
-    if(this.hasAuthorizationHeader()) {
-      headers.set('Authorization',this.authorizationHeaderValue);
-    }
-
-    headers.set('Content-Type','application/json');
-    return headers;
-  }
+	private getDefaultHeaders(): Headers {
+		let headers = new Headers();
+	
+		// Use this methode to insert some headers that are send with each request.
+		// Usefull for setting the `Autorization header` or any other header you want send with each request.
+	
+		if(this.oAuthService.hasValidAccessToken()){
+			headers.set('Authorization','Bearer ' + this.oAuthService.getAccessToken());
+		}
+		else if(!!this.authorizationHeaderValue) {
+			headers.set('Authorization',this.authorizationHeaderValue);
+		}
+	
+		headers.set('Content-Type','application/json');
+		return headers;
+	}
+	
 
   /**
 	 * Is the Authorization header set?

@@ -4,7 +4,6 @@
 /dist
 /tmp
 /out-tsc
-/src/app/fhict-api-service
 
 # dependencies
 /node_modules
