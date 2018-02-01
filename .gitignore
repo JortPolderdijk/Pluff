@@ -1,11 +1,10 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-/app/fhict-api-service
-
 # compiled output
 /dist
 /tmp
 /out-tsc
+/src/app/fhict-api-service
 
 # dependencies
 /node_modules
