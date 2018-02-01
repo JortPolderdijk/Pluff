@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
-import { OAuthService } from 'angular-oauth2-oidc';
-import { environment } from '../environments/environment';
+import {Component} from '@angular/core';
+
+import {OAuthService} from 'angular-oauth2-oidc';
+import {SharedService} from './shared.service';
+import {environment} from '../environments/environment';
+
+import {LoginModalComponent} from './modal/login/login.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  constructor(private oAuthService: OAuthService) {
+  constructor(private oAuthService: OAuthService, private sharedService: SharedService) {
+
     this.oAuthService.redirectUri = window.location.origin + '/';
     this.oAuthService.clientId = environment.production ? 'pluff-implicit' : 'pluff-dev';
     this.oAuthService.scope = 'openid profile fhict fhict_personal';
@@ -20,24 +26,26 @@ export class AppComponent {
 
       this.oAuthService.tryLogin({});
 
-      if (this.oAuthService.getIdToken() == null) {
-        this.oAuthService.initImplicitFlow();
+      if (!this.oAuthService.hasValidAccessToken()) {
+          this.sharedService.showModal.next(LoginModalComponent);
       }
 
     });
 
     this.oAuthService.tryLogin({});
+
   }
 
-  public get isLoggedIn()
-  {
+  public get isLoggedIn() {
     return this.oAuthService.hasValidAccessToken();
   }
 
-  public get name()
-  {
-    let claims = this.oAuthService.getIdentityClaims();
-    if (!claims) return 'Unknown';
+  public get name() {
+    const claims = this.oAuthService.getIdentityClaims();
+
+    if (!claims) {
+      return 'Unknown';
+    }
     return claims.given_name;
   }
 }

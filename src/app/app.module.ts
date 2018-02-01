@@ -7,16 +7,22 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { ApiClientService } from './fhict-api-service';
+
 import { AuthGuard } from './auth/auth.guard';
 import { TimetableComponent } from './timetable/timetable.component';
 import { RoomsComponent } from './rooms/rooms.component';
 
+import { ModalComponent } from './modal/modal.component';
+import { LoginModalComponent } from './modal/login/login.component';
+import { SharedService } from './shared.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     TimetableComponent,
     RoomsComponent,
+    ModalComponent,
+    LoginModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,8 +32,10 @@ import { RoomsComponent } from './rooms/rooms.component';
   ],
   providers: [
     AuthGuard,
-    ApiClientService
+    ApiClientService,
+    SharedService
   ],
-  bootstrap: [AppComponent]
+  entryComponents: [LoginModalComponent],
+  bootstrap: [AppComponent, ModalComponent]
 })
 export class AppModule { }

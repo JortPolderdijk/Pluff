@@ -19,7 +19,7 @@
     transform: scale(1.1);
 
     //TODO: find another way to do this
- 
+
   }
 
   > .container {
@@ -29,7 +29,7 @@
     background: _palette(overlay, bg-content);
     width: 35%;
 
-    > .inner {
+    .inner {
       padding: 1.5em !important;
     }
   }
