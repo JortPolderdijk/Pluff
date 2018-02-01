@@ -13,6 +13,11 @@
   z-index: _misc(z-index-base) + 2;
 
   .logo {
+
+    path {
+      @include vendor("transition", ("transform .5s ease"));
+    }
+
     > a {
       cursor: pointer;
 

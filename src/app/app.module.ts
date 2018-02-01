@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { Http, HttpModule, RequestOptions, XHRBackend } from '@angular/http';
+
+import { HttpService } from './shared/http.service';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,7 +35,14 @@ import { SharedService } from './shared/shared.service';
   providers: [
     AuthGuard,
     ApiClientService,
-    SharedService
+    SharedService,
+    {
+      provide: Http,
+      useFactory: (backend: XHRBackend, options: RequestOptions) => {
+        return new HttpService(backend, options);
+      },
+      deps: [XHRBackend, RequestOptions]
+    }
   ],
   entryComponents: [LoginModalComponent],
   bootstrap: [AppComponent, ModalComponent]
