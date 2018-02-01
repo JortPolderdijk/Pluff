@@ -11,7 +11,7 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import { ApiClientService } from './fhict-api-service';
 
 import { AuthGuard } from './auth/auth.guard';
-import { TimetableComponent } from './timetable/timetable.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 import { RoomsComponent } from './rooms/rooms.component';
 
 import { ModalComponent } from './modal/modal.component';
@@ -25,7 +25,7 @@ export function httpFactory(backend: XHRBackend, options: RequestOptions){
 @NgModule({
   declarations: [
     AppComponent,
-    TimetableComponent,
+    ScheduleComponent,
     RoomsComponent,
     ModalComponent,
     LoginModalComponent,

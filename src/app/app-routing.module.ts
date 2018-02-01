@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 
-import { TimetableComponent } from './timetable/timetable.component';
+import { ScheduleComponent } from './schedule/schedule.component';
 import { RoomsComponent } from './rooms/rooms.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/timetable', pathMatch: 'full' },
-  { path: 'timetable', component: TimetableComponent },
+  { path: '', redirectTo: '/schedule', pathMatch: 'full' },
+  { path: 'schedule', component: ScheduleComponent },
   { path: 'rooms', component: RoomsComponent }
 ];
 
