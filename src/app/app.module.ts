@@ -18,6 +18,10 @@ import { ModalComponent } from './modal/modal.component';
 import { LoginModalComponent } from './modal/login/login.component';
 import { SharedService } from './shared/shared.service';
 
+export function httpFactory(backend: XHRBackend, options: RequestOptions){
+  return new HttpService(backend, options);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,9 +42,7 @@ import { SharedService } from './shared/shared.service';
     SharedService,
     {
       provide: Http,
-      useFactory: (backend: XHRBackend, options: RequestOptions) => {
-        return new HttpService(backend, options);
-      },
+      useFactory: httpFactory,
       deps: [XHRBackend, RequestOptions]
     }
   ],
