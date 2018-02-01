@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 import {OAuthService} from 'angular-oauth2-oidc';
-import {SharedService} from './shared.service';
+import {SharedService} from './shared/shared.service';
 import {environment} from '../environments/environment';
 
 import {LoginModalComponent} from './modal/login/login.component';

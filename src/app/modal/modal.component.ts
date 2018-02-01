@@ -3,7 +3,7 @@ import {
   Injector, OnDestroy
 } from '@angular/core';
 
-import { SharedService } from '../shared.service';
+import { SharedService } from '../shared/shared.service';
 
 declare const $: any;
 

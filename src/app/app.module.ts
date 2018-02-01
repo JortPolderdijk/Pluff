@@ -14,7 +14,7 @@ import { RoomsComponent } from './rooms/rooms.component';
 
 import { ModalComponent } from './modal/modal.component';
 import { LoginModalComponent } from './modal/login/login.component';
-import { SharedService } from './shared.service';
+import { SharedService } from './shared/shared.service';
 
 @NgModule({
   declarations: [
