@@ -1,47 +1,52 @@
-@import '../../assets/sass/libs/skel';
+/**
+ * Temp Bootstrap fix
+ */
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import "~bootstrap/scss/utilities";
 
+/**
+ * Schedule CSS
+ */
 .schedule {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
 
-    > .day {
-        display: block;
-        width: calc(20% - 4px);
+  > .day {
 
-       > .header {
-            display: flex;
-            
-            > h1 {
-                font-size: 1.2em;
-                width: 6em;
-            }
-            
-            > .line {
-                flex-grow: 1;
-                background-image: linear-gradient(to right, black 40%, rgba(255,255,255,0) 0%);
-                background-position: bottom;
-                background-size: 5px 1px;
-                background-repeat: repeat-x;
-                height: 1px;
-                margin-top: 0.9em;
-                margin-right: 1em;
-            }
-       }
+    /**
+     * Single day header
+     */
+    > .header {
+      @extend .mb-3;
+      display: flex;
 
-       > .hour {
-           width: 100%;
-           background-color: #ff0;
+      > h2 {
+        width: 6em;
+      }
 
-           > .time {
-               
-           }
-       }
+      > .line {
+        flex-grow: 1;
+        background-image: linear-gradient(to right, black 40%, rgba(255, 255, 255, 0) 0%);
+        background-position: bottom;
+        background-size: 5px 1px;
+        background-repeat: repeat-x;
+        height: 1px;
+        margin-top: 0.9em;
+        margin-right: 1em;
+      }
     }
 
-    @media screen and (max-width: 980px) {
-        > .day {
-            width: 100%;
-        }
+    /**
+     * Single day blocks
+     */
+    .blocks > .block {
+      @extend .bg-dark;
+      @extend .mb-3;
+      @extend .p-3;
+      @extend .text-white;
+      height: 6em;
     }
+  }
 }
+
+
