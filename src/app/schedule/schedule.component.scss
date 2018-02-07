@@ -1,0 +1,47 @@
+@import '../../assets/sass/libs/skel';
+
+.schedule {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    > .day {
+        display: block;
+        width: calc(20% - 4px);
+
+       > .header {
+            display: flex;
+            
+            > h1 {
+                font-size: 1.2em;
+                width: 6em;
+            }
+            
+            > .line {
+                flex-grow: 1;
+                background-image: linear-gradient(to right, black 40%, rgba(255,255,255,0) 0%);
+                background-position: bottom;
+                background-size: 5px 1px;
+                background-repeat: repeat-x;
+                height: 1px;
+                margin-top: 0.9em;
+                margin-right: 1em;
+            }
+       }
+
+       > .hour {
+           width: 100%;
+           background-color: #ff0;
+
+           > .time {
+               
+           }
+       }
+    }
+
+    @media screen and (max-width: 980px) {
+        > .day {
+            width: 100%;
+        }
+    }
+}
