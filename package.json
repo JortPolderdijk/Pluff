@@ -49,6 +49,8 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "angular-oauth2-oidc": "^1.0.20",
+    "autoprefixer": "^7.2.5",
+    "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",
     "jquery": "^3.2.1",
     "rxjs": "^5.4.1",

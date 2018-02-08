@@ -27,7 +27,6 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
-        "assets/js/skel.min.js",
         "assets/js/main.js"
       ],
       "environmentSource": "environments/environment.ts",

@@ -1,47 +1,94 @@
-@import '../../assets/sass/libs/skel';
+/**
+ * Temp Bootstrap fix
+ */
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/grid";
 
+/**
+ * Schedule CSS
+ */
 .schedule {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+  @extend .no-gutters;
 
-    > .day {
-        display: block;
-        width: calc(20% - 4px);
+  > .day {
 
-       > .header {
-            display: flex;
-            
-            > h1 {
-                font-size: 1.2em;
-                width: 6em;
-            }
-            
-            > .line {
-                flex-grow: 1;
-                background-image: linear-gradient(to right, black 40%, rgba(255,255,255,0) 0%);
-                background-position: bottom;
-                background-size: 5px 1px;
-                background-repeat: repeat-x;
-                height: 1px;
-                margin-top: 0.9em;
-                margin-right: 1em;
-            }
-       }
+    /**
+     * Single day header
+     */
+    > .header {
+      @extend .mb-3;
+      display: flex;
 
-       > .hour {
-           width: 100%;
-           background-color: #ff0;
+      > h2 {
+        width: 6em;
+      }
 
-           > .time {
-               
-           }
-       }
+      > .line {
+        flex-grow: 1;
+        background-image: linear-gradient(to right, black 40%, rgba(255, 255, 255, 0) 0%);
+        background-position: bottom;
+        background-size: 5px 1px;
+        background-repeat: repeat-x;
+        height: 1px;
+        margin-top: 0.9em;
+        margin-right: 1em;
+      }
     }
 
-    @media screen and (max-width: 980px) {
-        > .day {
-            width: 100%;
+    /**
+     * Single day blocks
+     */
+    .blocks {
+      $block-height: 5em;
+      $bottom-spacing: 1em;
+
+      > .block {
+        @extend .row;
+        @extend .no-gutters;
+        height: $block-height;
+        margin-bottom: $bottom-spacing;
+
+        /**
+         * Variable block heights
+         */
+        @for $i from 1 through 8 {
+          &.span-#{$i} {
+            //* Calculate height and add the 'lost' margin bottom
+            height: ($block-height * $i) + ($bottom-spacing * ($i - 1));
+          }
         }
+
+        /**
+         * Block inner
+         */
+        .time {
+          @extend .col-lg-3;
+          @extend .p-0;
+
+          font-size: 11px;
+          color: gray("400");
+        }
+
+        .lesson {
+          @extend .col-lg-9;
+
+          font-weight: 600;
+          border-left: 5px solid $primary;
+        }
+
+        &.done .lesson {
+          border-color: $gray-400;
+        }
+
+        &.current .lesson {
+          border-color: $success;
+        }
+      }
     }
+  }
 }
+
+
