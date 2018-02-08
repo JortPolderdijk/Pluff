@@ -27,7 +27,7 @@ export class AppComponent {
       this.oAuthService.tryLogin({});
 
       if (!this.oAuthService.hasValidAccessToken()) {
-          this.sharedService.showModal.next(LoginModalComponent);
+        this.sharedService.showModal.next(LoginModalComponent);
       }
 
     });
