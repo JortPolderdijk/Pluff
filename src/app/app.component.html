@@ -2,7 +2,7 @@
   <div class="col-lg-1 bg-dark text-white">
 
     <!-- Left navigation -->
-    <nav id="nav" class="p-3">
+    <nav id="nav" class="p-3 mt-4">
       <span class="logo">
         <a routerLink="/" title="">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140.67 151.82"><defs><style>.a {
@@ -36,16 +36,16 @@
             class="f" d="M46.84,151.82H7.6a7.6,7.6,0,0,1,0-15.19H46.84A7.6,7.6,0,0,1,46.84,151.82Z"/></svg>
         </a>
       </span>
-      <ul>
-        <li>
-          <a routerLink="/schedule" title="">
-            <span class="icon"></span>
+      <ul class="nav flex-column left-navigation">
+        <li class="nav-item py-4">
+          <a class="active" routerLink="/schedule">
+            <i class="fal fa-calendar-alt fa-4x mb-2"></i>
             Schedule
           </a>
         </li>
-        <li>
-          <a routerLink="/rooms" title="">
-            <span class="icon"><i class="fa fa-map-o"></i></span>
+        <li class="nav-item">
+          <a routerLink="/rooms">
+            <i class="fal fa-calendar-check fa-4x mb-2"></i>
             Rooms
           </a>
         </li>

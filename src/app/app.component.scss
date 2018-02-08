@@ -1,0 +1,22 @@
+.row {
+  min-height: 100vh;
+}
+
+.left-navigation {
+  a {
+    color: rgba(255,255,255,0.8);
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &.active {
+      color: rgba(255,255,255,0.5);
+    }
+
+    > i {
+      display: block;
+      width: 100%;
+    }
+  }
+}

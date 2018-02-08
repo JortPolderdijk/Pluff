@@ -20,3 +20,10 @@
 @import './fontawesome/fontawesome';
 @import './fontawesome/fa-regular';
 @import './fontawesome/fa-light';
+
+/**
+ * Global styling
+ */
+html, body, .container-fluid {
+  min-height: 100vh;
+}
