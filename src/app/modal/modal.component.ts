@@ -30,7 +30,7 @@ export class ModalComponent implements OnDestroy {
       const factory = this.componentFactoryResolver.resolveComponentFactory(type);
       this.cmpRef = this.modalBody.createComponent(factory);
 
-      $('#overlay').show();
+      $('#loginModal').modal();
     });
   }
 
