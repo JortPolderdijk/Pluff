@@ -17,6 +17,7 @@ import {RoomsComponent} from './rooms/rooms.component';
 import {ModalComponent} from './modal/modal.component';
 import {LoginModalComponent} from './modal/login/login.component';
 import {SharedService} from './shared/shared.service';
+import {ScheduleItemParts} from '../pipes/ScheduleItemParts';
 
 export function httpFactory(backend: XHRBackend, options: RequestOptions) {
   return new HttpService(backend, options);
@@ -29,6 +30,7 @@ export function httpFactory(backend: XHRBackend, options: RequestOptions) {
     RoomsComponent,
     ModalComponent,
     LoginModalComponent,
+    ScheduleItemParts
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,7 @@ export function httpFactory(backend: XHRBackend, options: RequestOptions) {
     }
   ],
   entryComponents: [LoginModalComponent],
-  bootstrap: [AppComponent, ModalComponent]
+  bootstrap: [AppComponent, ModalComponent],
 })
 export class AppModule {
 }
