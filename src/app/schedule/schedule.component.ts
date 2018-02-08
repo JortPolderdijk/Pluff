@@ -15,7 +15,8 @@ export class ScheduleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.Schedule_MeByExpandteacherDaysStartStartlastmondayExpandweeksIncludedeleted(false, 5, '2018-02-05', true, false, false).subscribe(schedule => console.log(schedule));
+    this.service.Schedule_MeByExpandteacherDaysStartStartlastmondayExpandweeksIncludedeleted(false, 5, '2018-02-05',
+      true, false, false).subscribe(schedule => console.log(schedule));
   }
 
 }
