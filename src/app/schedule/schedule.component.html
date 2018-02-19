@@ -1,4 +1,5 @@
 <div class="row schedule">
+  <!--<div class="indicator">now</div>-->
   <div class="col day" *ngFor="let day of days">
     <div class="header">
       <h2 class="h5">{{ day.date|date:'EEE dd MMM' }}</h2>
@@ -7,8 +8,8 @@
     <ul class="blocks">
       <li *ngFor="let block of day.schedule.data" class="single"
           [ngStyle]="{height: singleHeight(block) + 'vh', top: blockOffset(block) + 'vh'}">
-        {{ block.subject }}<br/>
-        {{ block.start|date:'HH:mm' }} - {{ block.end|date:'HH:mm' }}
+        <span style="opacity: 0.8; font-size: 12px;">{{ block.start|date:'HH:mm' }} - {{ block.end|date:'HH:mm' }}</span><br />
+        <strong>{{ block.subject }}</strong><br/>
       </li>
     </ul>
   </div>

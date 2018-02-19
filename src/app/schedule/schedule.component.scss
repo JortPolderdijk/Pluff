@@ -12,6 +12,7 @@
  */
 .schedule {
   @extend .no-gutters;
+  position: relative;
 
   > .day {
 
@@ -51,13 +52,25 @@
 
       > .single {
         @extend .p-3;
-        background: #577F92;
+        @extend .bg-dark;
+        color: #fff;
         border-radius: 6px;
         position: absolute;
         width: 94%;
-        color: #fff;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
       }
     }
+  }
+
+  > .indicator {
+    position: absolute;
+    height: 1px;
+    width: 101%;
+    left: -2.2%;
+    background: #ff0000;
+    color: #ff0000;
+    top: 40vh;
+    z-index: 100;
   }
 }
 
