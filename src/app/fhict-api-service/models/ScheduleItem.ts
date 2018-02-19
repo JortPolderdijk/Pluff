@@ -5,7 +5,7 @@ export class ScheduleItem {
 		room: string;
 		subject: string;
 		subjectName: string;
-		teacherAbbreviation: string;
+		teacherAbbreviation;
 		start: string;
 		end: string;
 		uid: string;

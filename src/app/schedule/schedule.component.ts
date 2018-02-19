@@ -3,6 +3,7 @@ import {ApiClientService} from '../fhict-api-service';
 import {Schedule} from '../fhict-api-service/models';
 import {AppComponent} from '../app.component';
 import {ScheduleItem} from '../fhict-api-service/models/ScheduleItem';
+import {Day} from '../models/Day';
 
 @Component({
   selector: 'app-schedule',
@@ -11,7 +12,8 @@ import {ScheduleItem} from '../fhict-api-service/models/ScheduleItem';
 })
 export class ScheduleComponent implements OnInit {
 
-  public schedule: Schedule;
+  public days: Day[];
+  protected daysCount = 5;
 
   /**
    * Simple loop that returns the index of a value from a key in an array.
@@ -71,13 +73,45 @@ export class ScheduleComponent implements OnInit {
   }
 
   /**
+   * Create a schedule per day
+   *
+   * @param {Schedule} schedule
+   * @returns {Day[]}
+   */
+  private schedulePerDay(schedule: Schedule): Day[] {
+
+    const days = [];
+
+    // Loop over the max amount of days defined
+    for (let i = 0; i < this.daysCount; i++) {
+
+      // Create new Day and add a new Schedule
+      const daySchedule = new Day();
+      daySchedule.date = new Date(schedule.start);
+      daySchedule.date.setDate(daySchedule.date.getDate() + i);
+      daySchedule.schedule = new Schedule();
+
+      // Add the ScheduleItems with the corresponding date to this Day
+      daySchedule.schedule.data = [];
+      for (let d = 0; d < schedule.data.length; d++) {
+        if (new Date(schedule.data[d].start).getDay() === daySchedule.date.getDay()) {
+          daySchedule.schedule.data.push(schedule.data[d]);
+        }
+      }
+      days.push(daySchedule);
+    }
+
+    return days;
+  }
+
+  /**
    * Schedule constructor
    *
    * @param {ApiClientService} service
    * @param {AppComponent} app
    */
   constructor(private service: ApiClientService, private app: AppComponent) {
-    this.schedule = new Schedule();
+    this.days = [];
   }
 
   /**
@@ -88,9 +122,9 @@ export class ScheduleComponent implements OnInit {
       return;
     }
 
-    this.service.Schedule_MeByExpandteacherDaysStartStartlastmondayExpandweeksIncludedeleted(false, 5, '2018-02-05',
+    this.service.Schedule_MeByExpandteacherDaysStartStartlastmondayExpandweeksIncludedeleted(false, this.daysCount, '2018-02-19',
       true, false, false).subscribe(schedule => {
-      this.schedule = ScheduleComponent.combineBlocks(schedule);
+      this.days = this.schedulePerDay(ScheduleComponent.combineBlocks(schedule));
     });
   }
 }
