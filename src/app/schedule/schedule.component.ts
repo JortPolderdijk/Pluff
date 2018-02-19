@@ -127,4 +127,14 @@ export class ScheduleComponent implements OnInit {
       this.days = this.schedulePerDay(ScheduleComponent.combineBlocks(schedule));
     });
   }
+
+  /**
+   * Calculate the height of a single ScheduleItem
+   *
+   * @param {ScheduleItem} block
+   * @returns {number}
+   */
+  singleHeight(block: ScheduleItem) {
+    return Math.ceil(Math.abs(new Date(block.start).getTime() - new Date(block.end).getTime()) / (1000 * 60));
+  }
 }

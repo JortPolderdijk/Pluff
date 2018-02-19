@@ -5,8 +5,8 @@
       <div class="line"></div>
     </div>
     <ul class="blocks">
-      <li *ngFor="let block of day.schedule.data" class="pt-3">
-        {{ block.start }} - {{ block.teacherAbbreviation }}
+      <li *ngFor="let block of day.schedule.data" class="single" [ngStyle]="{height: singleHeight(block) + 'px'}">
+        {{ block.subject }}
       </li>
     </ul>
   </div>

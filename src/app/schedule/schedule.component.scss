@@ -42,50 +42,17 @@
      * Single day blocks
      */
     .blocks {
-      $block-height: 5em;
-      $bottom-spacing: 1em;
+      @extend .p-0;
+      @extend .pr-3;
+      margin: 0;
+      list-style: none;
+      padding: 0 20px 0 0;
 
-      > .block {
-        @extend .row;
-        @extend .no-gutters;
-        height: $block-height;
-        margin-bottom: $bottom-spacing;
-
-        /**
-         * Variable block heights
-         */
-        @for $i from 1 through 8 {
-          &.span-#{$i} {
-            //* Calculate height and add the 'lost' margin bottom
-            height: ($block-height * $i) + ($bottom-spacing * ($i - 1));
-          }
-        }
-
-        /**
-         * Block inner
-         */
-        .time {
-          @extend .col-lg-3;
-          @extend .p-0;
-
-          font-size: 11px;
-          color: gray("400");
-        }
-
-        .lesson {
-          @extend .col-lg-9;
-
-          font-weight: 600;
-          border-left: 5px solid $primary;
-        }
-
-        &.done .lesson {
-          border-color: $gray-400;
-        }
-
-        &.current .lesson {
-          border-color: $success;
-        }
+      > .single {
+        @extend .mb-3;
+        @extend .p-3;
+        background: #e1e1e1;
+        border-radius: 6px;
       }
     }
   }
