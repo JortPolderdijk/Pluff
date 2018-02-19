@@ -46,13 +46,16 @@
       @extend .pr-3;
       margin: 0;
       list-style: none;
-      padding: 0 20px 0 0;
+      position: relative;
+      height: 75vh;
 
       > .single {
-        @extend .mb-3;
         @extend .p-3;
-        background: #e1e1e1;
+        background: #577F92;
         border-radius: 6px;
+        position: absolute;
+        width: 94%;
+        color: #fff;
       }
     }
   }

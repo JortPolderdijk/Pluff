@@ -12,8 +12,20 @@ import {Day} from '../models/Day';
 })
 export class ScheduleComponent implements OnInit {
 
+  /**
+   * @type {Array<Day>} Days and their Schedules
+   */
   public days: Day[];
+
+  /**
+   * @type {number} of days displayed
+   */
   protected daysCount = 5;
+
+  /**
+   * @type {number} There are 58 quarters from 08:45 to 23:15.
+   */
+  protected quartersPerDay = 58;
 
   /**
    * Simple loop that returns the index of a value from a key in an array.
@@ -135,6 +147,20 @@ export class ScheduleComponent implements OnInit {
    * @returns {number}
    */
   singleHeight(block: ScheduleItem) {
-    return Math.ceil(Math.abs(new Date(block.start).getTime() - new Date(block.end).getTime()) / (1000 * 60));
+    return (Math.ceil(Math.abs(new Date(block.start).getTime() - new Date(block.end).getTime()) / (1000 * 60 * 15)) /
+      this.quartersPerDay) * 100;
+  }
+
+  /**
+   * Calculate the offset of a single block
+   *
+   * @param {ScheduleItem} block
+   * @returns {number}
+   */
+  blockOffset(block: ScheduleItem) {
+    let dayStart = new Date(block.start);
+    dayStart = new Date(dayStart.getFullYear(), dayStart.getMonth(), dayStart.getDate(), 8, 45);
+    return (Math.ceil(Math.abs(new Date(block.start).getTime() - dayStart.getTime()) / (1000 * 60 * 15)) /
+      this.quartersPerDay) * 100;
   }
 }
