@@ -110,6 +110,11 @@ export class ScheduleComponent implements OnInit {
           daySchedule.schedule.data.push(schedule.data[d]);
         }
       }
+
+      // Set active day
+      if (new Date().getDay() === daySchedule.date.getDay()) {
+        daySchedule.today = true;
+      }
       days.push(daySchedule);
     }
 

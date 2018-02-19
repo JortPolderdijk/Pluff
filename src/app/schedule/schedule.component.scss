@@ -24,12 +24,13 @@
       display: flex;
 
       > h2 {
+        @extend .text-secondary;
         width: 6em;
       }
 
       > .line {
         flex-grow: 1;
-        background-image: linear-gradient(to right, black 40%, rgba(255, 255, 255, 0) 0%);
+        background-image: linear-gradient(to right, $secondary 40%, rgba(255, 255, 255, 0) 0%);
         background-position: bottom;
         background-size: 5px 1px;
         background-repeat: repeat-x;
@@ -52,12 +53,23 @@
 
       > .single {
         @extend .p-3;
-        @extend .bg-dark;
+        @extend .bg-danger;
         color: #fff;
         border-radius: 6px;
         position: absolute;
-        width: 94%;
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        width: calc(100% - 1rem);
+      }
+    }
+
+    &.current {
+      .header {
+        > h2 {
+          @extend .text-success;
+        }
+
+        > .line {
+          background-image: linear-gradient(to right, #28a745 40%, rgba(255, 255, 255, 0) 0%);
+        }
       }
     }
   }

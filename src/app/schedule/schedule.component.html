@@ -1,6 +1,30 @@
+<div class="row mb-5">
+  <div class="col text-left">
+
+  </div>
+  <div class="col text-right">
+    Roosterweergave
+    <div class="pl-3 btn-group" role="group">
+      <button type="button" class="btn btn-dark">
+        <i class="far fa-calendar-alt mr-2"></i> Week
+      </button>
+      <button type="button" class="btn btn-outline-dark">
+        <i class="far fa-list-alt mr-2"></i> Lijst
+      </button>
+    </div>
+  </div>
+</div>
 <div class="row schedule">
-  <!--<div class="indicator">now</div>-->
-  <div class="col day" *ngFor="let day of days">
+  <div class="col-lg-1 day">
+    <div class="header">
+      <h2 class="h5">&nbsp;</h2>
+      <div class="line"></div>
+    </div>
+    <ul class="blocks">
+      <li class="single" style="height: 100%; background-color: #e1e1e1 !important;"></li>
+    </ul>
+  </div>
+  <div class="col day" *ngFor="let day of days" [class.current]="day.today">
     <div class="header">
       <h2 class="h5">{{ day.date|date:'EEE dd MMM' }}</h2>
       <div class="line"></div>
@@ -8,9 +32,11 @@
     <ul class="blocks">
       <li *ngFor="let block of day.schedule.data" class="single"
           [ngStyle]="{height: singleHeight(block) + 'vh', top: blockOffset(block) + 'vh'}">
-        <span style="opacity: 0.8; font-size: 12px;">{{ block.start|date:'HH:mm' }} - {{ block.end|date:'HH:mm' }}</span><br />
+        <span
+          style="opacity: 0.8; font-size: 12px;">{{ block.start|date:'HH:mm' }} - {{ block.end|date:'HH:mm' }}</span><br/>
         <strong>{{ block.subject }}</strong><br/>
       </li>
     </ul>
   </div>
 </div>
+
